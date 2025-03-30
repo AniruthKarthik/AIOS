@@ -1,0 +1,821 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Amrita Student Portal</title>
+        <style>
+            /* Color Variables */
+            :root {
+                --base-color: rgb(19, 19, 19);
+                --base-variant: rgb(255, 255, 255);
+                --text-color: #ffffff;
+                --accent-color: rgb(227, 159, 246);
+                --glow-color: rgba(227, 159, 246, 0.4);
+                --btn-bg-color: rgb(100, 61, 136);
+            }
+            
+            .lightmode {
+                --base-color: #eee7e5;
+                --base-variant: #f0f0f0;
+                --text-color: black;
+                --accent-color: black;
+                --glow-color: rgba(0, 0, 0, 0.2);
+                --btn-bg-color: #333;
+            }
+            
+            /* Global Styles */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            
+            body {
+                background-color: var(--base-color);
+                color: var(--text-color);
+                line-height: 1.6;
+            }
+            
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+            
+            /* Center all text */
+            .about-text, .section-title, .feature-title, .feature-text, .member-name, 
+            .member-role, .member-bio, .footer-title, .footer-section p, .copyright {
+                text-align: center;
+            }
+            
+            /* Header Styles */
+            header {
+                background: linear-gradient(135deg, #6e8efb, var(--accent-color));
+                color: white;
+                padding: 2rem 0;
+                text-align: center;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            
+            header .logo {
+                font-size: 3rem;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+                letter-spacing: 2px;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+                opacity: 0.9;
+            }
+            
+            /* Navigation - Updated as requested */
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: rgb(31, 31, 31);
+                padding: 1rem;
+                height: 8vh;
+                width: 80%;
+                margin-top: 2vh;
+                border-radius: 10px;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                position: relative;
+                z-index: 10;
+                margin: 2vh auto 0 auto;
+            }
+
+            nav .logo {
+                font-size: 1.5rem;
+                color: aliceblue;
+                font-weight: bold;
+            }
+
+            nav .nav-links {
+                list-style-type: none;
+                display: flex;
+            }
+
+            nav .nav-links li {
+                margin: 0 1rem;
+            }
+
+            nav .nav-links li a {
+                text-decoration: none;
+                color: #fefdff;
+                font-size: 1.2rem;
+            }
+
+            nav .nav-links li a:hover {
+                color: rgb(227, 159, 246);
+            }
+            
+            /* Main Content */
+            .main-content {
+                padding: 4rem 0;
+            }
+            
+            .about-section {
+                margin-bottom: 4rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+                position: relative;
+                display: inline-block;
+                color: var(--text-color);
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+            }
+            
+            .section-title::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                bottom: -10px;
+                width: 100px;
+                height: 3px;
+                background: linear-gradient(90deg, #6e8efb, var(--accent-color));
+                transform: translateX(-50%);
+            }
+            
+            .about-text {
+                font-size: 1.1rem;
+                max-width: 800px;
+                margin-bottom: 2rem;
+                color: var(--text-color);
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            /* Team Section */
+            .team-section {
+                margin-bottom: 4rem;
+            }
+            
+            .team-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 3rem;
+                margin-top: 2rem;
+            }
+            
+            .team-member {
+                background-color: rgba(255, 255, 255, 0.05);
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s, box-shadow 0.3s;
+                text-align: center;
+                min-height: 600px; 
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .team-member:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 12px 16px var(--glow-color);
+            }
+            
+            .member-image {
+                height: 320px;
+                overflow: hidden;
+            }
+            
+            .member-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            .member-details {
+                padding: 1.5rem;
+            }
+            
+            .member-name {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+                color: var(--text-color);
+            }
+            
+            .member-role {
+                font-size: 1rem;
+                color: var(--accent-color);
+                margin-bottom: 1rem;
+            }
+            
+            .member-bio {
+                font-size: 0.95rem;
+                color: var(--text-color);
+                opacity: 0.8;
+                margin-bottom: 1rem;
+            }
+            
+            .social-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 1.2rem;
+    padding: 0.8rem 0;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-links a:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--glow-color);
+}
+
+.social-links a svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+    fill: currentColor;
+}
+
+.social-links a:hover svg {
+    transform: scale(1.15);
+}
+
+/* Light mode adjustments */
+.lightmode .social-links a {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.lightmode .social-links a:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+            
+            /* Features Section */
+            .features-section {
+                margin-bottom: 4rem;
+            }
+            
+            .features-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+                margin-top: 2rem;
+            }
+            
+            .feature-card {
+                background-color: rgba(255, 255, 255, 0.05);
+                border-radius: 8px;
+                padding: 2rem;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s, box-shadow 0.3s;
+                text-align: center;
+            }
+            
+            .feature-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 16px var(--glow-color);
+            }
+            
+            .feature-icon {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+                color: var(--accent-color);
+                text-align: center;
+            }
+            
+            .feature-title {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+                color: var(--text-color);
+            }
+            
+            .feature-text {
+                font-size: 0.95rem;
+                color: var(--text-color);
+                opacity: 0.8;
+            }
+            
+            /* Footer */
+            footer {
+                background-color: rgb(25, 25, 25);
+                color: white;
+                padding: 3rem 0;
+                text-align: center;
+            }
+            
+            .footer-content {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            
+            .footer-section {
+                flex: 1;
+                min-width: 250px;
+                margin-bottom: 2rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-title {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+                position: relative;
+                display: inline-block;
+            }
+            
+            .footer-title::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                bottom: -8px;
+                width: 50px;
+                height: 2px;
+                background-color: var(--accent-color);
+                transform: translateX(-50%);
+            }
+            
+            .footer-links {
+                list-style: none;
+                text-align: center;
+            }
+            
+            .footer-links li {
+                margin-bottom: 0.8rem;
+            }
+            
+            .footer-links a {
+                color: #ecf0f1;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+            
+            .footer-links a:hover {
+                color: var(--accent-color);
+            }
+            
+            .footer-contact p {
+                margin-bottom: 0.8rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .footer-contact i {
+                margin-right: 10px;
+                color: var(--accent-color);
+            }
+            
+            .copyright {
+                text-align: center;
+                padding-top: 2rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                margin-top: 2rem;
+                font-size: 0.9rem;
+            }
+            
+    /* Theme Toggle - Updated Position */
+    .theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--btn-bg-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .theme-toggle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px var(--glow-color);
+    }
+
+    .theme-toggle.hidden {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    }
+
+    /* For better visibility in light mode */
+    .lightmode .theme-toggle {
+        background-color: rgb(19, 19, 19);;
+        color: white;
+    }
+            
+            /* Responsive Styles */
+            @media (max-width: 768px) {
+                .team-grid, .features-grid {
+                    grid-template-columns: 1fr;
+                }
+                
+                .section-title {
+                    font-size: 1.8rem;
+                }
+                
+                .about-text {
+                    font-size: 1rem;
+                }
+                
+                nav {
+                    width: 95%;
+                    flex-direction: column;
+                    height: auto;
+                    padding: 1rem 0.5rem;
+                }
+                
+                nav .logo {
+                    margin-bottom: 1rem;
+                }
+                
+                nav .nav-links {
+                    width: 100%;
+                    justify-content: center;
+                }
+                
+                nav .nav-links li {
+                    margin: 0 0.5rem;
+                }
+                
+                nav .nav-links li a {
+                    font-size: 1rem;
+                }
+            }
+            
+            /* Animation */
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .animated {
+                animation: fadeIn 0.8s ease forwards;
+                opacity: 0;
+            }
+
+            /* Webkit Scrollbar */
+            /* Webkit Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 40px;
+    margin: 10px;
+    box-shadow: inset 0 0 5px var(--glow-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 40px;
+    border: 2px solid var(--base-color);
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--btn-bg-color);
+}
+
+/* Light mode adjustments */
+.lightmode ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.lightmode ::-webkit-scrollbar-thumb {
+    border-color: var(--base-color);
+}
+
+        </style>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">AI OS</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Tools</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./CONTACT.html">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- About Section -->
+                <section id="about" class="about-section">
+                    <h2 class="section-title">About AIOS</h2>
+                    <p class="about-text">
+                        Welcome to the All In One Students Portal, a comprehensive platform specially curated for Amrita University students. This portal serves as your one-stop destination for academic resources, study tools, and campus information.
+                    </p>
+                    <p class="about-text">
+                        Created by students, for students, this portal aims to enhance your educational journey at Amrita by providing easy access to valuable resources that support your academic pursuits and campus life.
+                    </p>
+                    <p class="about-text">
+                        Our mission is to empower Amrita students with the digital tools and resources they need to excel in their studies, stay informed about campus activities, and connect with the university community.
+                    </p>
+                </section>
+                
+                <!-- Resources Section (formerly Team Section) -->
+                <section id="resources" class="team-section">
+                    <h2 class="section-title">🌟 Meet the Minds Behind This Toolkit! 🌟</h2>
+                    <p class="about-text">
+                        This toolkit was crafted with passion and precision by a dedicated team committed to making your learning journey smoother. From coding to research, each member has contributed to creating a resourceful and efficient toolkit just for you! 
+                    </p>
+                    
+                    <div class="team-grid">
+                        <!-- Resource 1 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="./thapa.png" alt="Course Materials">
+                            </div>
+                            <div class="member-details">
+                                <h3 class="member-name">Aniruth Karthik</h3>
+                                <p class="member-role">Member</p>
+                                <p class="member-bio">
+                                    Access comprehensive lecture notes, presentation slides, and reading materials for all courses offered at Amrita University. Organized by department, semester, and course code for easy navigation.
+                                </p>
+                                <div class="social-links">
+                                    <a href="https://github.com/aniruthkarthik" title="GitHub">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                                            <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://linkedin.com/in/aniruthkarthik" title="LinkedIn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://instagram.com/aniruthkarthik" title="Instagram">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Resource 2 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="./nm.jpg" alt="Exam Preparation">
+                            </div>
+                            <div class="member-details">
+                                <h3 class="member-name">Nihil Mukkesh</h3>
+                                <p class="member-role">Member</p>
+                                <p class="member-bio">
+                                    I played a key role in enhancing the AIOS Portal by developing the students' resource page for seamless access to books, question papers, and essential links. I also built the teacher contact tool, efficiently categorizing faculty details like Outlook emails and cabin locations. Additionally, I structured the about page to clearly present the portal’s purpose. My contributions aimed to make the platform more accessible, efficient, and student-friendly.
+                                </p>
+                                <div class="social-links">
+                                    <a href="https://github.com/aniruthkarthik" title="GitHub">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                                            <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://linkedin.com/in/aniruthkarthik" title="LinkedIn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://instagram.com/aniruthkarthik" title="Instagram">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Resource 3 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="/api/placeholder/400/320" alt="Research Resources">
+                            </div>
+                            <div class="member-details">
+                                <h3 class="member-name">BharatheeSha</h3>
+                                <p class="member-role">Member</p>
+                                <p class="member-bio">
+                                    Discover academic journals, research papers, and reference materials to support your projects and thesis work. Includes access to Amrita's digital library resources and research databases.
+                                </p>
+                                <div class="social-links">
+                                    <a href="https://github.com/aniruthkarthik" title="GitHub">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                                            <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://linkedin.com/in/aniruthkarthik" title="LinkedIn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://instagram.com/aniruthkarthik" title="Instagram">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Tools Section (formerly Features Section) -->
+                <section id="about" class="features-section">
+                    <h2 class="section-title">About Our Student Portal</h2>
+                    <p class="about-text">
+                        The All-In-One Amrita Student Portal is your digital campus hub, designed to empower students with integrated tools, resources, and services that streamline academic success and campus life.
+                    </p>
+                    
+                    <div class="features-grid">
+                        <!-- Feature 1 -->
+                        <div class="feature-card">
+                            <div class="feature-icon">🌟</div>
+                            <h3 class="feature-title">Our Mission</h3>
+                            <p class="feature-text">
+                                To create a seamless digital ecosystem that enhances learning experiences, fosters campus connections, and supports academic excellence for every Amrita student.
+                            </p>
+                        </div>
+                        
+                        <!-- Feature 2 -->
+                        <div class="feature-card">
+                            <div class="feature-icon">💡</div>
+                            <h3 class="feature-title">Key Features</h3>
+                            <p class="feature-text">
+                                Integrated academic tools, real-time updates, personalized dashboards, and mobile access - all designed to simplify your university journey from enrollment to graduation.
+                            </p>
+                        </div>
+                        
+                        <!-- Feature 3 -->
+                        <div class="feature-card">
+                            <div class="feature-icon">❤️</div>
+                            <h3 class="feature-title">Student-First Design</h3>
+                            <p class="feature-text">
+                                Developed with continuous student feedback, our platform adapts to your needs with intuitive navigation and accessible features for all learners.
+                            </p>
+                        </div>
+                        
+                        <!-- Feature 4 -->
+                        <div class="feature-card">
+                            <div class="feature-icon">🚀</div>
+                            <h3 class="feature-title">Innovative Technology</h3>
+                            <p class="feature-text">
+                                Built on secure cloud infrastructure with AI-powered recommendations and real-time synchronization across all your devices.
+                            </p>
+                        </div>
+                        
+                        <!-- Feature 5 -->
+                        <div class="feature-card">
+                            <div class="feature-icon">🤝</div>
+                            <h3 class="feature-title">Campus Connected</h3>
+                            <p class="feature-text">
+                                Your bridge to university resources - linking academic systems, library services, faculty support, and student organizations in one unified platform.
+                            </p>
+                        </div>
+                        
+                        <!-- Feature 6 -->
+                        <div class="feature-card">
+                            <div class="feature-icon">🔄</div>
+                            <h3 class="feature-title">Always Evolving</h3>
+                            <p class="feature-text">
+                                Regular updates with new features driven by user needs and emerging educational technologies.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3 class="footer-title">AIOS</h3>
+                        <p>Your complete educational companion for success at Amrita University.</p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="footer-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="/homepage/home.html">Home</a></li>
+                            <li><a href="/about/about.html">About</a></li>
+                            <li><a href="/resource/resource.html">Resources</a></li>
+                            <li><a href="/tools/tools.html">Tools</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="footer-title">University Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="https://intranet.cb.amrita.edu/">Intranet</a></li>
+                            <li><a href="https://www.amrita.edu/aums/">AUMS</a></li>
+                            <li><a href="https://cms.cb.amrita.edu/login">CMS</a></li>
+                            <li><a href="#">Amrita Events</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div id="contact" class="footer-section footer-contact">
+                        <h3 class="footer-title">Contact Us</h3>
+                        <p><i class="fas fa-envelope">✉</i> aioshelp@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt">📍</i> Amrita Coimbatore</p>
+                        <p><i class="fas fa-globe">🌐</i> www.aios.in</p>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    &copy; 2025 All In One Students Portal. All rights reserved.
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Theme Toggle Button -->
+        <div class="theme-toggle" id="themeToggle">🌓</div>
+        
+        <script>
+            // Animation on scroll
+            document.addEventListener('DOMContentLoaded', function() {
+                const animatedElements = document.querySelectorAll('.team-member, .feature-card, .section-title, .about-text');
+                
+                // Add animated class to elements
+                animatedElements.forEach((element, index) => {
+                    element.classList.add('animated');
+                    element.style.animationDelay = `${index * 0.1}s`;
+                });
+                
+                // Active navigation highlighting
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-links a');
+                
+                window.addEventListener('scroll', () => {
+                    let current = '';
+                    
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.clientHeight;
+                        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                            current = section.getAttribute('id');
+                        }
+                    });
+                    
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === current) {
+                            link.classList.add('active');
+                        }
+                    });
+                });
+                
+                // Theme Toggle
+                const themeToggle = document.getElementById('themeToggle');
+                const body = document.body;
+                
+                themeToggle.addEventListener('click', () => {
+                    if (body.classList.contains('lightmode')) {
+                        body.classList.remove('lightmode');
+                        themeToggle.textContent = '🌓';
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        body.classList.add('lightmode');
+                        themeToggle.textContent = '🌞';
+                        localStorage.setItem('theme', 'light');
+                    }
+                });
+                
+                // Check for saved theme preference
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'light') {
+                    body.classList.add('lightmode');
+                    themeToggle.textContent = '🌞';
+                }
+            });
+        </script>
+    </body>
+    </html>

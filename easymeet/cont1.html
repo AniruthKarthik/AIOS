@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Screen Layout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="cont1.css"> -->
+</head>
+<style>
+    html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: #eee7e5;
+}
+
+.p1 {
+    background-color: #eee7e5;
+    display: flex;
+    justify-content: center;  /* Centers horizontally */
+    align-items: center;      /* Centers vertically */
+    width: 100%;
+    height: 100vh; 
+    transform: translateY(-5%);
+}
+
+  
+  .p1 .cont1 {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center text */
+    padding: 0 5%;
+
+}
+
+  
+  .p1 h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+  }
+  .p1 p,a{
+    font-size: 1.2em;
+  }
+  
+
+  
+
+  /* animated button start*/
+.animated-button {
+  border-radius: 10px;
+  position: relative;
+  margin-top: 5vh;
+  display: inline-block;
+  padding: 10px 30px;
+  font-size: 16px;
+  color: black;
+  background: transparent;
+  border: 1px solid black;
+  cursor: pointer;
+  overflow: hidden;
+}
+.animated-button {
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+.animated-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: black;
+  transition: left 0.3s ease;
+  z-index: -1;}
+
+.animated-button:hover {
+  color: white;
+}
+.animated-button:hover::before {
+  left: 0;
+}
+/* animated button end */
+</style>
+
+<body>
+    <div class="p1">
+        <div class="cont1">
+            <h1>Easy Meet</h1>
+            <p>Welcome to Easy Meet, the simple way to book meetings. Select a staff member and pick a date that works for you. Our easy-to-use interface ensures quick and hassle-free scheduling.</p>
+            
+            <a href="select.html" target="container1"><button class="animated-button">Schedule Now !</button>
+</a>
+        </div></div>
+    
+</body>
+</html>

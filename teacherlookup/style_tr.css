@@ -1,0 +1,118 @@
+/* style_tr.css */
+body {
+    background-color: rgb(19, 19, 19);
+    color: rgb(227, 159, 246);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.department-heading {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.department-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: rgb(227, 159, 246);
+    border-radius: 2px;
+}
+
+.department-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.department-link {
+    display: block;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    text-decoration: none;
+    color: rgb(227, 159, 246);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(227, 159, 246, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.department-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(227, 159, 246, 0.1),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.department-link:hover {
+    background: rgba(227, 159, 246, 0.1);
+    transform: translateX(8px);
+    box-shadow: 0 4px 15px rgba(227, 159, 246, 0.1);
+}
+
+.department-link:hover::before {
+    left: 100%;
+}
+
+/* Teacher card styling */
+.teacher-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(227, 159, 246, 0.1);
+}
+
+.teacher-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: rgb(227, 159, 246);
+    font-size: 1.2rem;
+}
+
+.teacher-card p {
+    margin: 0.3rem 0;
+    color: rgba(227, 159, 246, 0.9);
+    font-size: 0.95rem;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(227, 159, 246, 0.4);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(227, 159, 246, 0.6);
+}

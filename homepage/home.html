@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Caveat:400,500,600,700&display=swap');
+        
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #374151;
+            text-align: center;
+            background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow: hidden;
+        }
+        
+        * { box-sizing: border-box; }
+        
+        .nav {
+            height: 8vh;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        header ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+        }
+        
+        header ul li {
+            display: inline-block;
+            margin-left: 15px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            font-size: 1.2rem;
+            padding: 5px 10px;
+            position: relative;
+        }
+        
+        /* Underline effect */
+        .link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .link:hover::after {
+            transform: scaleX(1);
+        }
+        
+        /* Custom header title (not affected by other h1s) */
+        .header-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #111827;
+            margin: 0;
+        }
+        
+        /* Custom h1 styling */
+        .customh1 {
+            margin: 20px 0;
+            font-weight: 700;
+            line-height: 1;
+            font-family: "Caveat";
+            padding: 60px 20px 20px 20px;
+        }
+        
+        /* Yellow background for the entire h1 */
+        .yellow-bg {
+            background-image: url("https://odoocdn.com/openerp_website/static/src/img/highlights/yellow_highlight_bold_05.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            display: inline-block;
+            padding: 14px 30px;
+        }
+        
+        @media (min-width: 1200px) {
+            .customh1 { font-size: 6rem; }
+        }
+        
+        .customh2 {
+            margin: 20px 0;
+            font-weight: 700;
+            line-height: 1;
+            font-family: "Caveat";
+            padding: 20px 10px 20px 10px;
+        }
+        
+        /* Blue underline for student kit */
+        .blue-underline {
+            background-image: url("https://odoocdn.com/openerp_website/static/src/img/highlights/blue_highlight_01.svg"); 
+            background-position: center bottom; 
+            background-repeat: no-repeat; 
+            background-size: contain; 
+            white-space: nowrap;
+            display: inline-block;
+            padding-bottom: 15px; 
+        }
+        
+        @media (min-width: 1200px) {
+            .customh2 { font-size: 4rem; }
+        }
+        .toolsdiv{
+            background-color: #F3F4F6;
+            width: 100%;
+            height: 48%;
+            border-radius: 150% 150% 0 0 ;
+        }
+        .tools-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 80px 10px;
+    flex-wrap: wrap;
+}
+
+.tool-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    margin-left: 20px;
+    height: 150px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #374151;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    padding: 10px;
+}
+
+.tool-card img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 8px;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href=""><h1 class="header-title">AI OS</h1></a>
+        <nav>
+            <ul>
+                <li><a href="/tools/tools.html" class="link">Tools</a></li>
+                <li><a href="/about/about.html" class="link">About</a></li>
+                <li><a href="/contact/contact.html" class="link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <h1 class="customh1">All your tools on <span class="yellow-bg">one platform</span>.</h1>
+    <h1 class="customh2">All In - One <span class="blue-underline">Student Kit</span></h1>
+    <div class="toolsdiv">
+        <div class="tools-container" >
+            <a href="/resource/resource.html" class="tool-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/888/888883.png" >
+                <span>Resources</span>
+            </a>
+            <a href="/easymeet/home.html" class="tool-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111432.png" >
+                <span>Easy Meet</span>
+            </a>
+            <a href="/events/events.html" class="tool-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" >
+                <span>Events</span>
+            </a>
+            <!-- <a href="/profile/profile.html" class="tool-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" >
+                <span>Student Info</span>
+            </a> -->
+            <a href="/ticket/ticket.html" class="tool-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968517.png" >
+                <span>Raise Ticket</span>
+            </a>
+            <div style="width: 100%; text-align: center; margin-top: 20px; padding-bottom: 40px;">
+                <a href="/tools/tools.html" class="link" style="font-size: 1.2rem; font-weight: 500; display: inline-block; text-decoration: none; color: #374151;">
+                    More Tools
+                </a>
+            </div>
+            
+            
+            
+        </div>
+    </div>
+    </body>
+</html>

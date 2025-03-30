@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Resource Portal</title>
+    <link rel="stylesheet" href="stylessheet.css">
+    <script src="main.js" defer></script> <!-- Link to the external JS file -->
+</head>
+
+<body background="">
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">AI OS</div>
+        <ul class="nav-links">
+            <li><a href="/homepage/home.html">Home</a></li>
+            <li><a href="/tools/tools.html">Tools</a></li>
+            <li><a href="/about/about.html">About</a></li>
+            <li><a href="/contact/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Welcome to the Student Resource Portal</h1>
+        <p>Here you will find resources, courses, and more to assist with your academic journey.</p>
+    </div>
+
+    <div class="img">
+        <img src="./hero-img-2-22e4f2c5.svg">
+    </div>
+
+    <div class="dropdowns">
+        <!-- Department Dropdown -->
+        <div class="dropdown">
+            <label for="department">Select Department</label>
+            <select id="department">
+                <option value="CS">Computer Science</option>
+                <option value="AI">Artificial Intelligence</option>
+                <option value="AIDS">AI & Data Science</option>
+                <option value="ME">Mechanical Engineering</option>
+            </select>
+        </div>
+
+        <!-- Year of Study Dropdown -->
+        <div class="dropdown">
+            <label for="year">Select Year</label>
+            <select id="year">
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+                <option value="4">4th Year</option>
+            </select>
+        </div>
+
+        <!-- Find Resource Button -->
+        <button id="find-resource">Find Resource</button>
+    </div>
+
+    <div class="next">
+        <p> ✨ Explore Endless Learning Opportunities 🎓 </p>
+        <h3>Specially Curated for Amrita Students!</h3>
+    </div>
+
+    <div class="cards-container">
+        <div class="card">
+            <div class="bg"></div>
+            <div class="blob"></div>
+            <div class="card-heading">Books</div>
+            <div class="card-text">Explore academic books to boost your knowledge and learning experience. 📖</div>
+        </div>
+
+        <div class="card">
+            <div class="bg"></div>
+            <div class="blob"></div>
+            <div class="card-heading">Materials </div>
+            <div class="card-text">Access useful materials to support your courses and academic journey. ✏️</div>
+        </div>
+
+        <div class="card">
+            <div class="bg"></div>
+            <div class="blob"></div>
+            <div class="card-heading">Links </div>
+            <div class="card-text">Discover helpful links to enhance your learning with extra resources. 🌐</div>
+        </div>
+    </div>
+
+    <div class="nextt">
+        
+        <h3>MORE TOOLS</h3>
+        <p>Explore More Such Tools To Make Your Life Easy!</p>
+    </div>
+
+    <div class="slider-container">
+        <div class="slider">
+            <div class="box">Tool 1</div>
+            <div class="box">Tool 2</div>
+            <div class="box">Tool 3</div>
+            <div class="box">Tool 4</div>
+        </div>
+    </div>
+
+</div>
+
+    <div id="theme-switch" onclick="toggleTheme()">
+        <!-- Dark Mode Icon (Default) -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9Zm0 16a7 7 0 1 1 7-7 7 7 0 0 1-7 7Z"/>
+        </svg>
+
+        <!-- Light Mode Icon (Hidden by default) -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 5.5a1.5 1.5 0 0 1 0-3 1.5 1.5 0 0 1 0 3Zm0 16.5a1.5 1.5 0 0 1 0-3 1.5 1.5 0 0 1 0 3ZM4.93 7.07a1.5 1.5 0 1 1 2.12-2.12 1.5 1.5 0 1 1-2.12 2.12ZM16.95 19.07a1.5 1.5 0 1 1 2.12-2.12 1.5 1.5 0 1 1-2.12 2.12ZM2 13.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 1 1-3 0Zm19 0a1.5 1.5 0 1 1 3 0 1.5 1.5 0 1 1-3 0ZM4.93 19.07a1.5 1.5 0 1 1 2.12-2.12 1.5 1.5 0 1 1-2.12 2.12ZM16.95 7.07a1.5 1.5 0 1 1 2.12-2.12 1.5 1.5 0 1 1-2.12 2.12ZM12 17a5 5 0 1 1 5-5 5 5 0 0 1-5 5Z"/>
+        </svg>
+    </div>
+
+    
+   <!-- Footer -->
+   <footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">AIOS</h3>
+                <p>Your complete educational companion for success at Amrita University.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./resource.html">Resources</a></li>
+                    <li><a href="./tools.html">Tools</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">University Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://intranet.cb.amrita.edu/">Intranet</a></li>
+                    <li><a href="https://www.amrita.edu/aums/">AUMS</a></li>
+                    <li><a href="https://cms.cb.amrita.edu/login">CMS</a></li>
+                    <li><a href="#">Amrita Events</a></li>
+                </ul>
+            </div>
+            
+            <div id="contact" class="footer-section footer-contact">
+                <h3 class="footer-title">Contact Us</h3>
+                <p><i class="fas fa-envelope">✉</i> aioshelp@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt">📍</i> Amrita Coimbatore</p>
+                <p><i class="fas fa-globe">🌐</i> www.aios.in</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2025 All In One Students Portal. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+
+</body>
+
+
+
+</html>

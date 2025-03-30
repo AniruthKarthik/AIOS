@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile Page</title>
+    <link rel="stylesheet" href="styles1.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="top-nav">
+    <div class="logo">AI OS</div>
+        <a href="#home">Home</a>
+        <a href="#events">Events</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="left-nav">
+            <ul>
+                <li onclick="loadContent('home')">
+                    <span class="icon">🏠</span>
+                    <span class="text">Home</span>
+                </li>
+                <li onclick="loadContent('profile')">
+                    <span class="icon">👤</span>
+                    <span class="text">Profile</span>
+                </li>
+                <li onclick="loadContent('attendance')">
+                    <span class="icon">📅</span>
+                    <span class="text">Attendance</span>
+                </li>
+                <li onclick="loadContent('marks')">
+                    <span class="icon">📊</span>
+                    <span class="text">Marks</span>
+                </li>
+                <li onclick="loadContent('grades')">
+                    <span class="icon">🎓</span>
+                    <span class="text">Grades</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content" id="content">
+           <blockquote> <h2>All about a Student !</h2> </blockquote>
+        </div>
+    </div>
+</body>
+</html>

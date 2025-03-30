@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Support - AIOS</title>
+    <style>
+      :root {
+        --base-color: rgb(19, 19, 19);
+        --base-variant: rgb(255, 255, 255);
+        --text-color: #ffffff;
+        --accent-color: rgb(227, 159, 246);
+        --glow-color: rgba(227, 159, 246, 0.4);
+        --btn-bg-color: rgb(100, 61, 136);
+      }
+
+      .lightmode {
+        --base-color: #eee7e5;
+        --base-variant: #f0f0f0;
+        --text-color: black;
+        --accent-color: black;
+        --glow-color: rgba(0, 0, 0, 0.2);
+        --btn-bg-color: #333;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--base-color);
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(31, 31, 31);
+        padding: 1rem;
+        height: 8vh;
+        width: 80%;
+        margin-top: 2vh;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+        z-index: 10;
+        margin: 2vh auto 0 auto;
+      }
+
+      nav .logo {
+        font-size: 1.5rem;
+        color: aliceblue;
+        font-weight: bold;
+      }
+
+      nav .nav-links {
+        list-style-type: none;
+        display: flex;
+      }
+
+      nav .nav-links li {
+        margin: 0 1rem;
+      }
+
+      nav .nav-links li a {
+        text-decoration: none;
+        color: #fefdff;
+        font-size: 1.2rem;
+      }
+
+      nav .nav-links li a:hover {
+        color: rgb(227, 159, 246);
+      }
+
+      /* Main Content */
+      .main-content {
+        padding: 4rem 0;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          var(--btn-bg-color),
+          var(--accent-color)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Form Container */
+      .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      /* Contact Form */
+      .contact-form {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 2.5rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .lightmode .contact-form {
+        background-color: rgba(0, 0, 0, 0.03);
+      }
+
+      .form-group {
+        margin-bottom: 1.8rem;
+      }
+
+      #subject {
+        color: black;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.8rem;
+        font-weight: 500;
+        color: var(--text-color);
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--text-color);
+        font-size: 1rem;
+        transition: all 0.3s;
+      }
+
+      .lightmode input,
+      .lightmode textarea,
+      .lightmode select {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      select {
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e39ff6'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1em;
+        padding-right: 2.5rem !important;
+      }
+
+      .lightmode select {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px var(--glow-color);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      /* Star Rating */
+      .star-rating {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 2rem 0;
+        direction: rtl; /* Change to ltr if needed */
+      }
+
+      .star-rating input {
+        display: none;
+        direction: rtl; /* Change to ltr if needed */
+      }
+
+      .star-rating label {
+        cursor: pointer;
+        font-size: 2.5rem;
+        color: rgba(255, 255, 255, 0.3);
+        transition: all 0.3s;
+        direction: rtl;
+      }
+
+      .lightmode .star-rating label {
+        color: rgba(0, 0, 0, 0.2);
+      }
+
+      .star-rating input:checked ~ label,
+      .star-rating label:hover,
+      .star-rating label:hover ~ label {
+        color: var(--accent-color);
+        text-shadow: 0 0 12px var(--glow-color);
+      }
+
+      button {
+        background-color: var(--btn-bg-color);
+        color: white;
+        border: none;
+        padding: 1.2rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        width: 100%;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+
+      button:hover {
+        background-color: var(--accent-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px var(--glow-color);
+      }
+
+      /* Success Message */
+      .success-message {
+        display: none;
+        background-color: rgba(46, 204, 113, 0.2);
+        border: 1px solid rgba(46, 204, 113, 0.5);
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-top: 2rem;
+        text-align: center;
+        color: #2ecc71;
+        font-weight: 500;
+      }
+
+      /* Theme Toggle */
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: var(--btn-bg-color);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: var(--btn-bg-color);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .theme-toggle svg {
+        stroke: var(--toggle-icon-color);
+        width: 24px;
+        height: 24px;
+        transition: all 0.3s ease;
+      }
+
+      :root {
+        --toggle-icon-color: rgba(255, 255, 255, 0.9);
+        --toggle-bg-color: rgb(100, 61, 136);
+      }
+
+      .lightmode {
+        --toggle-icon-color: rgba(0, 0, 0, 0.9);
+        --toggle-bg-color: #f0f0f0;
+      }
+
+      .theme-toggle {
+        background-color: var(--toggle-bg-color);
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1) rotate(15deg);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .lightmode .theme-toggle:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        nav {
+          width: 95%;
+          padding: 1rem;
+        }
+
+        .nav-links {
+          gap: 1rem;
+        }
+
+        .contact-form {
+          padding: 1.5rem;
+        }
+
+        .star-rating label {
+          font-size: 2rem;
+        }
+
+        button {
+          padding: 1rem;
+        }
+      }
+
+      /* Footer */
+      footer {
+        background-color: rgb(25, 25, 25);
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .footer-section {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-title {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      .footer-title::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -8px;
+        width: 50px;
+        height: 2px;
+        background-color: var(--accent-color);
+        transform: translateX(-50%);
+      }
+
+      .footer-links {
+        list-style: none;
+        text-align: center;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-links a {
+        color: #ecf0f1;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent-color);
+      }
+
+      .footer-contact p {
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .footer-contact i {
+        margin-right: 10px;
+        color: var(--accent-color);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 2rem;
+        font-size: 0.9rem;
+      }
+
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 40px;
+        margin: 10px;
+        box-shadow: inset 0 0 5px var(--glow-color);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
+        border-radius: 40px;
+        border: 2px solid var(--base-color);
+        transition: background 0.3s ease;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--btn-bg-color);
+      }
+
+      /* Light mode adjustments */
+      .lightmode ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      .lightmode ::-webkit-scrollbar-thumb {
+        border-color: var(--base-color);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="5" />
+        <path
+          d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+        />
+      </svg>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <div class="logo">AI OS</div>
+      <ul class="nav-links">
+        <li><a href="/homepage/home.html">Home</a></li>
+        <li><a href="/tools/tools.html">Tools</a></li>
+        <li><a href="/about/about.html">About</a></li>
+        <li><a href="/contact/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main -->
+    <div class="main-content">
+      <div class="container">
+        <h2 class="section-title">Contact Support</h2>
+
+        <div class="form-container">
+          <div class="contact-form">
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="studentId">Student ID</label>
+                <input type="text" id="studentId" />
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" required>
+                  <option value="">Select a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="academic">Academic Support</option>
+                  <option value="technical">Technical Issue</option>
+                  <option value="financial">Financial Aid</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" required></textarea>
+              </div>
+
+              <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5" />
+                <label for="star5">★</label>
+                <input type="radio" id="star4" name="rating" value="4" />
+                <label for="star4">★</label>
+                <input type="radio" id="star3" name="rating" value="3" />
+                <label for="star3">★</label>
+                <input type="radio" id="star2" name="rating" value="2" />
+                <label for="star2">★</label>
+                <input type="radio" id="star1" name="rating" value="1" />
+                <label for="star1">★</label>
+              </div>
+
+              <button type="submit">Send Message</button>
+              <div class="success-message" id="successMessage">
+                Thank you! Your message has been received.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">AIOS</h3>
+            <p>
+              Your complete educational companion for success at Amrita
+              University.
+            </p>
+          </div>
+
+          <div class="footer-section">
+            <h3 class="footer-title">Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#resources">Resources</a></li>
+              <li><a href="#tools">Tools</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3 class="footer-title">University Links</h3>
+            <ul class="footer-links">
+              <li><a href="#">Intranet</a></li>
+              <li><a href="#">AUMS</a></li>
+              <li><a href="#">CMS</a></li>
+              <li><a href="#">Amrita Events</a></li>
+            </ul>
+          </div>
+
+          <div id="contact" class="footer-section footer-contact">
+            <h3 class="footer-title">Contact Us</h3>
+            <p><i class="fas fa-envelope">✉</i> aioshelp@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt">📍</i> Amrita Coimbatore</p>
+            <p><i class="fas fa-globe">🌐</i> www.aios.in</p>
+          </div>
+        </div>
+
+        <div class="copyright">
+          &copy; 2025 All In One Students Portal. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+      // Theme Toggle
+      const themeToggle = document.getElementById("themeToggle");
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("lightmode");
+      });
+
+      // Form Submission
+      const contactForm = document.getElementById("contactForm");
+      const successMessage = document.getElementById("successMessage");
+
+      contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Simulate submission
+        successMessage.style.display = "block";
+        contactForm.reset();
+
+        // Reset stars
+        document.querySelectorAll('input[name="rating"]').forEach((star) => {
+          star.checked = false;
+        });
+
+        // Hide message after 5s
+        setTimeout(() => {
+          successMessage.style.display = "none";
+        }, 5000);
+      });
+    </script>
+  </body>
+</html>

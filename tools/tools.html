@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools Page</title>
+    <style>
+        :root {
+            --base-color: rgb(19, 19, 19);
+            --base-variant: rgb(35, 35, 35);
+            --text-color: #ffffff;
+            --accent-color: rgb(227, 159, 246);
+            --accent-rgb: 227, 159, 246;
+            --btn-bg-color: rgb(100, 61, 136);
+            --glow-color: rgba(227, 159, 246, 0.4);
+        }
+        
+        .lightmode {
+            --base-color: #ffffff;
+            --base-variant: #f0f0f0;
+            --text-color: #333333;
+            --accent-color: #000000;
+            --accent-rgb: 0, 0, 0;
+            --btn-bg-color: #e0e0e0;
+            --glow-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            min-height: 310vh;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: var(--base-color);
+            color: var(--text-color);
+            padding-right: 15px;
+            overflow-y:scroll;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(31, 31, 31);
+    padding: 1rem;
+    height: 8vh;
+    width: 80%;
+    margin-top: 2vh;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 10;
+    margin: 2vh auto 0 auto;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    color: aliceblue;
+    font-weight: bold;
+}
+
+nav .nav-links {
+    list-style-type: none;
+    display: flex;
+}
+
+nav .nav-links li {
+    margin: 0 1rem;
+}
+
+nav .nav-links li a {
+    text-decoration: none;
+    color: #fefdff;
+    font-size: 1.2rem;
+}
+
+nav .nav-links li a:hover {
+    color: rgb(227, 159, 246);
+}
+        
+        .main-content {
+            min-height: 72vh;
+            padding: 2rem;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .main-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+        
+        .main-content p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 40px;
+            margin: 10px;
+            box-shadow: inset 0 0 5px var(--glow-color);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 40px;
+            border: 2px solid var(--base-color);
+            transition: background 0.3s ease;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--btn-bg-color);
+        }
+        
+        .tools-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            width: 90%;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        .tool-box {
+            background-color: var(--btn-bg-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 0.5em 0.15em var(--glow-color),
+                        0 0 2em 0.5em rgba(var(--accent-rgb), 0.1),
+                        inset 0 0 0.4em 0.15em var(--glow-color);
+            min-height: 150px;
+            position: relative;
+        }
+        
+        .tool-box:hover {
+            color: var(--base-color);
+            background-color: var(--accent-color);
+            box-shadow: 0 0 1em 0.25em var(--glow-color),
+                        0 0 4em 2em rgba(var(--accent-rgb), 0.2),
+                        inset 0 0 0.75em 0.25em var(--glow-color);
+            transform: translateY(-5px);
+        }
+        
+        .tool-box:active {
+            box-shadow: 0 0 0.6em 0.25em var(--glow-color),
+                        0 0 2.5em 2em rgba(var(--accent-rgb), 0.1),
+                        inset 0 0 0.5em 0.25em var(--glow-color);
+            transform: translateY(0);
+        }
+        
+        .tool-box .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tool-box .tool-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        /* Footer */
+ footer {
+    background-color: rgb(25, 25, 25);
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-title {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    width: 50px;
+    height: 2px;
+    background-color: var(--accent-color);
+    transform: translateX(-50%);
+}
+
+.footer-links {
+    list-style: none;
+    text-align: center;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+.footer-contact p {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-contact i {
+    margin-right: 10px;
+    color: var(--accent-color);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--btn-bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px var(--glow-color);
+        }
+        
+        @media (max-width: 1200px) {
+            .tools-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .tools-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .tools-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            nav {
+                width: 90%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .tools-container {
+                grid-template-columns: 1fr;
+            }
+            nav .nav-links {
+                display: none;
+            }
+        }
+        </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">AI OS</div>
+        <ul class="nav-links">
+            <li><a href="/homepage/home.html">Home</a></li>
+            <li><a href="/tools/tools.html">Tools</a></li>
+            <li><a href="/about/about.html">About</a></li>
+            <li><a href="/contact/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Our Tools Collection</h1>
+        <p>Explore our wide range of digital tools designed to help you with various tasks. Click on any tool to start using it right away!</p>
+        
+        <!-- Tools Grid -->
+        <div class="tools-container">
+            <!-- Row 1 -->
+            <a href="./teachers_contact.html" class="tool-box">
+                <div class="emoji">🔍</div>
+                <div class="tool-name">Teacher LookUp</div>
+            </a>
+            <a href="notes.html" class="tool-box">
+                <div class="emoji">📹</div>
+                <div class="tool-name">Easy Meet</div>
+            </a>
+            <a href="weather.html" class="tool-box">
+                <div class="emoji">🌦️</div>
+                <div class="tool-name">Weather App</div>
+            </a>
+            <a href="timer.html" class="tool-box">
+                <div class="emoji">⏱️</div>
+                <div class="tool-name">Timer</div>
+            </a>
+            <a href="converter.html" class="tool-box">
+                <div class="emoji">🔄</div>
+                <div class="tool-name">Unit Converter</div>
+            </a>
+            
+            <!-- Row 2 -->
+            <a href="calendar.html" class="tool-box">
+                <div class="emoji">📅</div>
+                <div class="tool-name">Calendar</div>
+            </a>
+            <a href="todo.html" class="tool-box">
+                <div class="emoji">✅</div>
+                <div class="tool-name">Todo List</div>
+            </a>
+            <a href="password.html" class="tool-box">
+                <div class="emoji">🔒</div>
+                <div class="tool-name">Password Generator</div>
+            </a>
+            <a href="color.html" class="tool-box">
+                <div class="emoji">🎨</div>
+                <div class="tool-name">Color Picker</div>
+            </a>
+            <a href="music.html" class="tool-box">
+                <div class="emoji">🎵</div>
+                <div class="tool-name">Music Player</div>
+            </a>
+            
+            <!-- Row 3 -->
+            <a href="translator.html" class="tool-box">
+                <div class="emoji">🌐</div>
+                <div class="tool-name">Translator</div>
+            </a>
+            <a href="qrcode.html" class="tool-box">
+                <div class="emoji">📱</div>
+                <div class="tool-name">QR Code Generator</div>
+            </a>
+            <a href="markdown.html" class="tool-box">
+                <div class="emoji">📄</div>
+                <div class="tool-name">Markdown Editor</div>
+            </a>
+            <a href="dictionary.html" class="tool-box">
+                <div class="emoji">📚</div>
+                <div class="tool-name">Dictionary</div>
+            </a>
+            <a href="pomodoro.html" class="tool-box">
+                <div class="emoji">🍅</div>
+                <div class="tool-name">Pomodoro Timer</div>
+            </a>
+            
+            <!-- Row 4 -->
+            <a href="drawing.html" class="tool-box">
+                <div class="emoji">✏️</div>
+                <div class="tool-name">Drawing App</div>
+            </a>
+            <a href="currency.html" class="tool-box">
+                <div class="emoji">💱</div>
+                <div class="tool-name">Currency Converter</div>
+            </a>
+            <a href="countdown.html" class="tool-box">
+                <div class="emoji">⏳</div>
+                <div class="tool-name">Countdown Timer</div>
+            </a>
+            <a href="recipe.html" class="tool-box">
+                <div class="emoji">🍳</div>
+                <div class="tool-name">Recipe Finder</div>
+            </a>
+            <a href="meditation.html" class="tool-box">
+                <div class="emoji">🧘</div>
+                <div class="tool-name">Meditation App</div>
+            </a>
+        </div>
+    </div>
+
+           <!-- Footer -->
+           <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3 class="footer-title">AIOS</h3>
+                        <p>Your complete educational companion for success at Amrita University.</p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="footer-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#resources">Resources</a></li>
+                            <li><a href="#tools">Tools</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3 class="footer-title">University Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="https://intranet.cb.amrita.edu/">Intranet</a></li>
+                            <li><a href="https://www.amrita.edu/aums/">AUMS</a></li>
+                            <li><a href="https://cms.cb.amrita.edu/login">CMS</a></li>
+                            <li><a href="#">Amrita Events</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div id="contact" class="footer-section footer-contact">
+                        <h3 class="footer-title">Contact Us</h3>
+                        <p><i class="fas fa-envelope">✉</i> aioshelp@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt">📍</i> Amrita Coimbatore</p>
+                        <p><i class="fas fa-globe">🌐</i> www.aios.in</p>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    &copy; 2025 All In One Students Portal. All rights reserved.
+                </div>
+            </div>
+        </footer>
+        
+            <div class="theme-toggle" id="themeToggle">🌓</div>
+
+            <script>
+                // Animation on scroll
+                document.addEventListener('DOMContentLoaded', function() {
+                    const animatedElements = document.querySelectorAll('.team-member, .feature-card, .section-title, .about-text');
+                    
+                    // Add animated class to elements
+                    animatedElements.forEach((element, index) => {
+                        element.classList.add('animated');
+                        element.style.animationDelay = `${index * 0.1}s`;
+                    });
+                    
+                    // Active navigation highlighting
+                    const sections = document.querySelectorAll('section');
+                    const navLinks = document.querySelectorAll('.nav-links a');
+                    
+                    window.addEventListener('scroll', () => {
+                        let current = '';
+                        
+                        sections.forEach(section => {
+                            const sectionTop = section.offsetTop;
+                            const sectionHeight = section.clientHeight;
+                            if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                                current = section.getAttribute('id');
+                            }
+                        });
+                        
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === current) {
+                                link.classList.add('active');
+                            }
+                        });
+                    });
+                    
+                    // Theme Toggle
+                    const themeToggle = document.getElementById('themeToggle');
+                    const body = document.body;
+                    
+                    themeToggle.addEventListener('click', () => {
+                        if (body.classList.contains('lightmode')) {
+                            body.classList.remove('lightmode');
+                            themeToggle.textContent = '🌓';
+                            localStorage.setItem('theme', 'dark');
+                        } else {
+                            body.classList.add('lightmode');
+                            themeToggle.textContent = '🌞';
+                            localStorage.setItem('theme', 'light');
+                        }
+                    });
+                    
+                    // Check for saved theme preference
+                    const savedTheme = localStorage.getItem('theme');
+                    if (savedTheme === 'light') {
+                        body.classList.add('lightmode');
+                        themeToggle.textContent = '🌞';
+                    }
+                });
+            </script>
+           </body>
+           </html>
+
+    

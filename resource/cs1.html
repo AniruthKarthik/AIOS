@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <nav>
+    <div class="logo">AI OS</div>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Tools</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./CONTACT.html">Contact</a></li>
+    </ul>
+</nav>
+
+    <div class="main-content">
+        <h1>Hello, Computer Science Freshers!</h1>
+        <p>Here you can find all the materials for your 1st Year</p>
+    </div>
+    
+    <div class="full-screen-box">
+        <!-- Sidebar for subjects -->
+        <div class="sidebar">
+          <h2>Subjects</h2>
+          <ul>
+            <li onclick="showMaterials('CPS')">Computational Problem Solving</li>
+            <li onclick="showMaterials('Calculus')">Calculus</li>
+            <li onclick="showMaterials('TC')">Technical Communication</li>
+            <li onclick="showMaterials('EEE')">Electrical & Electronics Engineering</li>
+            <li onclick="showMaterials('OOP')">Object Oriented Programming</li>
+            <li onclick="showMaterials('UID')">User Interface Design</li>
+            <li onclick="showMaterials('LA')">Linear Algebra</li>
+            <li onclick="showMaterials('DM')">Discrete Mathematics</li>
+            <li onclick="showMaterials('CM')">Curriculum 2023</li>
+          </ul>
+        </div>
+      
+        <!-- Materials content area -->
+        <div class="materials-content" id="materials-content">
+          <ul id="materials-list">
+            <!-- Dynamically populated material links -->
+          </ul>
+        </div>
+      </div>
+
+      Footer
+   <footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">AIOS</h3>
+                <p>Your complete educational companion for success at Amrita University.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">University Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://intranet.cb.amrita.edu/">Intranet</a></li>
+                    <li><a href="https://www.amrita.edu/aums/">AUMS</a></li>
+                    <li><a href="https://cms.cb.amrita.edu/login">CMS</a></li>
+                    <li><a href="#">Amrita Events</a></li>
+                </ul>
+            </div>
+            
+            <div id="contact" class="footer-section footer-contact">
+                <h3 class="footer-title">Contact Us</h3>
+                <p><i class="fas fa-envelope">✉</i> aioshelp@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt">📍</i> Amrita Coimbatore</p>
+                <p><i class="fas fa-globe">🌐</i> www.aios.in</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2025 All In One Students Portal. All rights reserved.
+        </div>
+    </div>
+</footer>
+      
+
+
+
+    <script src="cs1.js"></script>    
+
+</body>
+</html>
