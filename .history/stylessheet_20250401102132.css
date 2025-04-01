@@ -479,46 +479,34 @@ body::-webkit-scrollbar-thumb:hover {
     height: 40px;
     width: 40px;
     padding: 0;
-    border-radius: 10px;
-    background-color: rgb(31, 31, 31);
+    border-radius: 10px; /* Matching navbar's border-radius */
+    background-color: rgb(31, 31, 31); /* Match navbar background */
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 2vh;
-    right: calc(10% - 50px);
+    top: 2vh; /* Align with navbar's top position */
+    right: calc(10% - 50px); /* Position relative to navbar's right edge */
     border: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Match navbar shadow */
     cursor: pointer;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    z-index: 10;
+    backdrop-filter: blur(10px); /* Match navbar's backdrop filter */
+    z-index: 10; /* Same z-index as navbar */
 }
 
 #theme-switch:hover {
-    background-color: rgb(45, 45, 45);
+    background-color: rgb(45, 45, 45); /* Slightly lighter on hover */
 }
 
 #theme-switch svg {
     fill: var(--accent-color);
-    width: 22px;
-    height: 22px;
-    transition: all 0.3s ease;
+    width: 20px;
+    height: 20px;
 }
 
-/* Hide the second SVG (sun icon) by default in dark mode */
-#theme-switch svg:nth-child(2) {
+#theme-switch svg:last-child {
     display: none;
-}
-
-/* In light mode, hide the first SVG (circle) and show the second SVG (sun) */
-.lightmode #theme-switch svg:first-child {
-    display: none;
-}
-
-.lightmode #theme-switch svg:nth-child(2) {
-    display: block;
-    fill: black;
 }
  /* Footer */
  footer {
