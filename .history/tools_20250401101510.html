@@ -188,70 +188,54 @@ nav .nav-links li a:hover {
 }
 
 /* Footer */
-/* Footer - Refined Professional Layout */
 footer {
     background-color: rgb(25, 25, 25);
     color: white;
-    padding: 4rem 0 2rem;
+    padding: 3rem 0;
+    text-align: center;
     width: 100%;
-    margin-top: auto;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    margin-top: auto; /* Push footer to the bottom */
 }
 
 .footer-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    text-align: left;
-    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .footer-section {
     flex: 1;
-    min-width: 200px;
+    min-width: 250px;
+    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding-right: 1rem;
-}
-
-.footer-section p {
-    margin-bottom: 1.2rem;
-    line-height: 1.6;
-    color: #e0e0e0;
-    text-align: left;
-    max-width: 300px;
+    align-items: center;
 }
 
 .footer-title {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.2rem;
     margin-bottom: 1.5rem;
     position: relative;
     display: inline-block;
-    text-align: left;
-    color: #ffffff;
 }
 
 .footer-title::after {
     content: '';
     position: absolute;
-    left: 0;
+    left: 50%;
     bottom: -8px;
-    width: 40px;
-    height: 3px;
+    width: 50px;
+    height: 2px;
     background-color: var(--accent-color);
+    transform: translateX(-50%);
 }
 
 .footer-links {
     list-style: none;
-    text-align: left;
-    padding: 0;
+    text-align: center;
 }
 
 .footer-links li {
@@ -259,55 +243,38 @@ footer {
 }
 
 .footer-links a {
-    color: #e0e0e0;
+    color: #ecf0f1;
     text-decoration: none;
-    transition: color 0.2s ease, padding-left 0.2s ease;
-    display: inline-block;
+    transition: color 0.3s;
 }
 
 .footer-links a:hover {
     color: var(--accent-color);
-    padding-left: 5px;
-}
-
-.footer-contact {
-    align-items: flex-start;
 }
 
 .footer-contact p {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
-    text-align: left;
+    justify-content: center;
 }
 
 .footer-contact i {
-    margin-right: 12px;
+    margin-right: 10px;
     color: var(--accent-color);
-    min-width: 20px;
-    text-align: center;
 }
 
 .copyright {
     text-align: center;
     padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 3rem;
+    margin-top: 2rem;
     font-size: 0.9rem;
-    color: #b0b0b0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        gap: 2.5rem;
-    }
-    
-    .footer-section {
-        width: 100%;
-        padding-right: 0;
-    }
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .theme-toggle {
@@ -485,10 +452,10 @@ footer {
             <div class="footer-section">
                 <h3 class="footer-title">Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="./home.html">Home</a></li>
-                    <li><a href="./about.html">About</a></li>
-                    <li><a href="./resource.html">Resources</a></li>
-                    <li><a href="./tools.html">Tools</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#tools">Tools</a></li>
                 </ul>
             </div>
             

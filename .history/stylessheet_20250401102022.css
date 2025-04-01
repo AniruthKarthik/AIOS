@@ -476,50 +476,31 @@ body::-webkit-scrollbar-thumb:hover {
 
 #theme-switch {
     color: var(--text-color);
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     padding: 0;
-    border-radius: 10px;
-    background-color: rgb(31, 31, 31);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 50%; /* Changed from 20% to 50% for a perfect circle */
+    background-color: var(--base-variant);
+    display: flex; /* Added to center the icon */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
     position: absolute;
-    top: 2vh;
-    right: calc(10% - 50px);
-    border: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    z-index: 10;
-}
-
-#theme-switch:hover {
-    background-color: rgb(45, 45, 45);
+    top: 80px; /* Changed from 60px to 80px to move it down */
+    right: 120px;
+    border: 2px solid var(--accent-color); /* Changed border style */
+    box-shadow: 0 0 10px var(--glow-color); /* Enhanced shadow effect */
+    cursor: pointer; /* Add pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
 #theme-switch svg {
-    fill: var(--accent-color);
-    width: 22px;
-    height: 22px;
-    transition: all 0.3s ease;
+    fill: var(--accent-color)
 }
 
-/* Hide the second SVG (sun icon) by default in dark mode */
-#theme-switch svg:nth-child(2) {
+#theme-switch svg:last-child {
     display: none;
 }
 
-/* In light mode, hide the first SVG (circle) and show the second SVG (sun) */
-.lightmode #theme-switch svg:first-child {
-    display: none;
-}
-
-.lightmode #theme-switch svg:nth-child(2) {
-    display: block;
-    fill: black;
-}
  /* Footer */
  footer {
     background-color: rgb(25, 25, 25);
