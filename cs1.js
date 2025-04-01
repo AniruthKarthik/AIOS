@@ -79,4 +79,5 @@ function showMaterials(subject) {
         materialsContent.appendChild(noMaterialsMessage);
         materialsContent.style.display = "block";
     }
+    
 }
