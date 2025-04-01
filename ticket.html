@@ -120,6 +120,10 @@
             <input type="tel" id="phone" name="phone" required>
             <span id="phoneError" class="error"></span>
             
+            <label for="idno">ID Number</label>
+            <input type="text" id="idno" name="idno" required>
+            <span id="idnoError" class="error"></span>
+            
             <label for="category">Complaint Category</label>
             <select id="category" name="category" required>
                 <option value="infrastructure">Infrastructure</option>
@@ -155,6 +159,8 @@
                     errorSpan.textContent = "Invalid email format";
                 } else if (this.id === "phone" && !/^\d{10}$/.test(this.value)) {
                     errorSpan.textContent = "Phone number must be 10 digits";
+                } else if (this.id === "idno" && !/^[a-zA-Z]{2}\.[a-zA-Z]{2}\.\d{2}[a-zA-Z]{2}\d{5}$/.test(this.value)) {
+                    errorSpan.textContent = "Invalid ID number format. For ex: CB.SC.U4CSE245XX";
                 }
             });
         });
@@ -171,7 +177,17 @@
             } else {
                 phoneError.textContent = "";
             }
+
+            let idnoInput = document.getElementById("idno");
+            let idnoError = document.getElementById("idnoError");
             
+            if (!/^[a-zA-Z]{2}\.[a-zA-Z]{2}\.\d{2}[a-zA-Z]{2}\d{5}$/.test(idnoInput.value)) {
+                idnoError.textContent = "Invalid ID number format. For ex: CB.SC.U4CSE245XX";
+                return;
+            } else {
+                idnoError.textContent = "";
+            }
+
             alert("Your form has been submitted successfully!");
             window.location.href = "home.html";
         });
