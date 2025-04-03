@@ -18,16 +18,16 @@ app.whenReady().then(() => {
         {
             label: "← Back", // Using plain arrow for consistency
             click: () => {
-                if (mainWindow.webContents.canGoBack()) {
-                    mainWindow.webContents.goBack();
+                if (mainWindow.webContents.navigationHistory.canGoBack) {
+                    mainWindow.webContents.navigationHistory.goBack();
                 }
             }
         },
         {
             label: "Forward →", // Similar arrow for Forward button
             click: () => {
-                if (mainWindow.webContents.canGoForward()) {
-                    mainWindow.webContents.goForward();
+                if (mainWindow.webContents.navigationHistory.canGoForward) {
+                    mainWindow.webContents.navigationHistory.goForward();
                 }
             }
         },
