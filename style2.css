@@ -6,36 +6,69 @@ body {
     overflow: hidden;
     height: 100%;
 }
-.top-nav {
+.navbar {
     width: 100%;
     height: 6vh; 
-    background-color: black;
+    background-color: white;
     display: flex;
-    align-items: center;
+    padding: 0 2%;
+    position: fixed;
     justify-content: space-between;
+    align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     position: fixed; 
     top: 0;
     left: 0;
     z-index: 1000; 
+    box-sizing: border-box;
 }
-.top-nav .logo {
-    color: white;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-left: 1rem;
+
+.navbar .logo {
+    color: black;
+    font-size: 2rem;
+    
+    font-weight: 500;
+    margin-top: 20px;
 }
-.top-nav a {
-    color: white;
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.navbar li {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar a {
+    color: black;
     text-decoration: none;
-    font-size: 1rem;
-    padding: 10px 20px;
-    margin-left: auto;
-    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 5px;
+    position: relative;
     transition: background-color 0.3s ease;
 }
-.top-nav a:hover {
-    background-color: gray;
+.navbar .link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.navbar .link:hover::after {
+    transform: scaleX(1);
 }
 .container {
     display: flex;
@@ -88,12 +121,8 @@ body {
     font-size: 20px;
     margin-right: 10px;
 }
-.left-nav .text {
-    display: none;
-}
-.left-nav:hover .text {
-    display: inline;
-}
+
+
 .left-nav li.active{
     background-color: #e0e0e0;
     font-weight: bold;

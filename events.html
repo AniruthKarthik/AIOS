@@ -1,163 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<title>College Events</title>
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Events</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
     <header>
-    <br>
+        <br>
         <blockquote> <h2>Have a look into</h2>
              <h1>What's happening in the college!</h1> </blockquote>
     </header>
-
+    
     <main>
-
-        
-
+        <header class="navbar">
+            <h1 class="logo"><b>AIOS</b></h1>
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="link" style="margin-left: -200px;">Home</a></li>
+                    <li><a href="tools.html" class="link">Tools</a></li>
+                    <li><a href="about.html" class="link">About</a></li>
+                    <li><a href="contact.html" class="link">Contact</a></li>        
+                </ul>
+            </nav>
+        </header>
+    
         <div class="marquee">
-            <div class="event-widget">
-                <a href="event1.html">
-                    <img src="images/gokulashtami.jpeg" alt="Event 1">
+            <div class="event-widget" onclick="showEventDetails('Gokulashtami')">
+                    <img src="gokulashtami.jpeg" alt="Event 1">
                     <p>Gokulashtami</p>
-                </a>
             </div>
-            <div class="event-widget">
-                <a href="event2.html">
-                    <img src="images/students.jpeg" alt="Event 2">
+            <div class="event-widget" onclick="showEventDetails('Students Meet')">
+                    <img src="students.jpeg" alt="Event 2">
                     <p> Students Meet</p>
-                </a>
             </div>
-            <div class="event-widget">
-                <a href="event3.html">
-                    <img src="images/talk.jpeg" alt="Event 3">
+            <div class="event-widget" onclick="showEventDetails('Tech Talk')">
+                    <img src="talk.jpeg" alt="Event 3">
                     <p>Tech talk</p>
-                </a>
             </div>
-            <div class="event-widget">
-                <a href="event4.html">
-                    <img src="images/diwali.jpeg" alt="Event 4">
+            <div class="event-widget" onclick="showEventDetails('Diwali')">
+                    <img src="diwali.jpeg" alt="Event 4">
                     <p>Diwali</p>
-                </a>
             </div>
-            <div class="event-widget">
-                <a href="event5.html">
-                    <img src="images/basketball.jpeg" alt="Event 5">
+            <div class="event-widget" onclick="showEventDetails('BasketBall')">
+                    <img src="basketball.jpeg" alt="Event 5">
                     <p>BasketBall</p>
-                </a>
             </div>
         </div>
 
-        <div class="navbar">
-            <div class="logo">AI OS</div>
-            <div>
-            <a href="home.html">Home</a>
-            <a href="tools.html">Tools</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-</div>
-        </div>
-        
         <div class="events-grid">
-            <div class="event-card large">
-                <a href="event1.html">
-                    <img src="images/krishna.jpeg" alt="Event 1">
+            <div class="event-card large" onclick="showEventDetails('gokulashtami')">
+                    <img src="krishna.jpeg" alt="Event 1">
                     <p>Gokulashtami</p>
-                </a>
             </div>
-            <div class="event-card tall">
-                <a href="event2.html">
-                    <img src="images/athletics.jpeg" alt="Event 2">
+            <div class="event-card tall" onclick="showEventDetails('Athletics')">
+                    <img src="athletics.jpeg" alt="Event 2">
                     <p>Athletics</p>
-                </a>
             </div>
-            <div class="event-card wide">
-                <a href="event3.html">
-                    <img src="images/discussion.jpeg" alt="Event 3">
+            <div class="event-card wide" onclick="showEventDetails('Discussion - Moral Values')">
+                    <img src="discussion.jpeg" alt="Event 3">
                     <p>Discussion - Moral Values</p>
-                </a>
             </div>
-            <div class="event-card small">
-                <a href="event4.html">
-                    <img src="images/ettimadai.jpeg" alt="Event 4">
+            <div class="event-card small" onclick="showEventDetails('NSS school teaching')">
+                    <img src="ettimadai.jpeg" alt="Event 4">
                     <p>NSS school teaching</p>
-                </a>
             </div>
-            <div class="event-card large">
-                <a href="event5.html">
-                    <img src="images/proshow.jpeg" alt="Event 5">
+            <div class="event-card large" onclick="showEventDetails('ProShow')">
+                    <img src="proshow.jpeg" alt="Event 5">
                     <p>ProShow</p>
-                </a>
             </div>
-            <div class="event-card wide">
-                <a href="event6.html">
-                    <img src="images/yoga1.jpeg" alt="Event 6">
+            <div class="event-card wide" onclick="showEventDetails('Yoga day')">
+                    <img src="yoga1.jpeg" alt="Event 6">
                     <p>Yoga day</p>
-                </a>
             </div>
-            <div class="event-card tall ">
-                <a href="event7.html">
-                    <img src="images/raaga.jpeg" alt="Event 7">
+            <div class="event-card tall" onclick="showEventDetails('Concert')">
+                    <img src="raaga.jpeg" alt="Event 7">
                     <p>Concert</p>
-                </a>
             </div>
-            <div class="event-card small">
-                <a href="event8.html">
-                    <img src="images/celebration.jpeg" alt="Event 8">
+            <div class="event-card small" onclick="showEventDetails('Dance fest')">
+                    <img src="celebration.jpeg" alt="Event 8">
                     <p>Dance fest</p>
-                </a>
             </div>
-            <div class="event-card tall">
-                <a href="event9.html">
-                    <img src="images/mime.jpeg" alt="Event 9">
+            <div class="event-card tall" onclick="showEventDetails('Mime')">
+                    <img src="mime.jpeg" alt="Event 9">
                     <p>Mime</p>
-                </a>
             </div>
-            <div class="event-card small">
-                <a href="event10.html">
-                    <img src="images/painting.jpeg" alt="Event 10">
+            <div class="event-card small" onclick="showEventDetails('Face painting')">
+                    <img src="painting.jpeg" alt="Event 10">
                     <p>Face painting</p>
-                </a>
             </div>
-            <div class="event-card large">
-                <a href="event11.html">
-                    <img src="images/onam.jpeg" alt="Event 11">
+            <div class="event-card large" onclick="showEventDetails('Onam')">
+                    <img src="onam.jpeg" alt="Event 11">
                     <p>Onam</p>
-                </a>
             </div>
-            <div class="event-card large">
-                <a href="event12.html">
-                    <img src="images/tech talk.jpeg" alt="Event 12">
+            <div class="event-card large" onclick="showEventDetails('Tech talk')">
+                    <img src="tech talk.jpeg" alt="Event 12">
                     <p>Tech talk</p>
-                </a>
             </div>
-            <div class="event-card small">
-                <a href="event13.html">
-                    <img src="images/exhibition.jpeg" alt="Event 13">
+            <div class="event-card small" onclick="showEventDetails('Science fair')">
+                    <img src="exhibition.jpeg" alt="Event 13">
                     <p>Science fair</p>
-                </a>
             </div>
-            <div class="event-card small">
-                <a href="event14.html">
-                    <img src="images/dance.jpeg" alt="Event 14">
+            <div class="event-card small" onclick="showEventDetails('Dance show')">
+                    <img src="dance.jpeg" alt="Event 14">
                     <p>Dance show</p>
-                </a>
             </div>
-            <div class="event-card small">
-                <a href="event15.html">
-                    <img src="images/foodcarving.jpeg" alt="Event 15">
+            <div class="event-card small" onclick="showEventDetails('Food science')">
+                    <img src="foodcarving.jpeg" alt="Event 15">
                     <p>Food science</p>
-                </a>
             </div>
-            
         </div>
+
+            <div id="eventModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                    <img id="modalImage" src="" alt="Event Image">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDescription"></p>
+                </div>
+            </div>
+
     </main>
+
+    <script>
+        const eventData = {
+            'Gokulashtami': {
+                desc: 'Celebration of Lord Krishna\'s birthday with cultural performances and traditional rituals.',
+                img: 'gokulashtami.jpeg'
+            },
+            'Students Meet': {
+                desc: 'Annual gathering of students with faculty for knowledge sharing and networking.',
+                img: 'students.jpeg'
+            },
+            'Tech Talk': {
+                desc: 'Expert session on emerging technologies and career opportunities in the IT industry.',
+                img: 'talk.jpeg'
+            },
+            'Diwali': {
+                desc: 'Festival of lights celebration with cultural programs, fireworks, and sweet distribution.',
+                img: 'diwali.jpeg'
+            },
+            'BasketBall': {
+                desc: 'Inter-college basketball tournament finals with exciting matches and prizes.',
+                img: 'basketball.jpeg'
+            },
+            
+            // Grid Cards
+            'gokulashtami': {
+                desc: 'Celebration of Lord Krishna\'s birthday with cultural performances and traditional rituals.',
+                img: 'krishna.jpeg'
+            },
+            'Athletics': {
+                desc: 'Annual sports meet featuring track and field events with participants from multiple colleges.',
+                img: 'athletics.jpeg'
+            },
+            'Discussion - Moral Values': {
+                desc: 'Interactive session on importance of moral values in modern society with guest speakers.',
+                img: 'discussion.jpeg'
+            },
+            'NSS school teaching': {
+                desc: 'National Service Scheme volunteers teaching underprivileged children at local schools.',
+                img: 'ettimadai.jpeg'
+            },
+            'ProShow': {
+                desc: 'Professional cultural night featuring famous artists and student performances.',
+                img: 'proshow.jpeg'
+            },
+            'Yoga day': {
+                desc: 'International Yoga Day celebration with mass yoga session and wellness workshops.',
+                img: 'yoga1.jpeg'
+            },
+            'Tech talk': {
+                desc: 'Expert session on emerging technologies and career opportunities in the IT industry.',
+                img: 'tech talk.jpeg'
+            },
+            'Concert': {
+                desc: 'Musical evening featuring classical and contemporary performances by students.',
+                img: 'raaga.jpeg'
+            },
+            'Dance fest': {
+                desc: 'Inter-college dance competition with various categories and judging by professionals.',
+                img: 'celebration.jpeg'
+            },
+            'Mime': {
+                desc: 'Silent theatrical performance competition showcasing creative expression.',
+                img: 'mime.jpeg'
+            },
+            'Face painting': {
+                desc: 'Creative competition where participants showcase artistic face painting skills.',
+                img: 'painting.jpeg'
+            },
+            'Onam': {
+                desc: 'Traditional Kerala festival celebration with flower carpets and cultural programs.',
+                img: 'onam.jpeg'
+            },
+            'Science fair': {
+                desc: 'Exhibition of innovative student projects in science and technology.',
+                img: 'exhibition.jpeg'
+            },
+            'Dance show': {
+                desc: 'Annual dance showcase featuring various styles from classical to contemporary.',
+                img: 'dance.jpeg'
+            },
+            'Food science': {
+                desc: 'Exhibition demonstrating scientific principles through food art and experiments.',
+                img: 'foodcarving.jpeg'
+            }
+        };
+    
+        function showEventDetails(title) {
+            const event = eventData[title];
+            if (event) {
+                document.getElementById('modalTitle').textContent = title;
+                document.getElementById('modalDescription').textContent = event.desc;
+                document.getElementById('modalImage').src = event.img;
+                document.getElementById('eventModal').style.display = 'block';
+            }
+        }
+    
+        function closeModal() {
+            document.getElementById('eventModal').style.display = 'none';
+        }
+    
+        window.onclick = function(event) {
+            const modal = document.getElementById('eventModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+            
+        
 </body>
 </html>
