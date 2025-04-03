@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <script>
+        function loadContent(page) {
+            const frame = document.getElementById('contentFrame');
+    
+        const pageMap = {
+            'attendance': 'attendance.html',
+            'marks': 'marks.html',
+            'details': 'details.html'
+    };
+    if (pageMap[page]) {
+        frame.src = pageMap[page];
+    }
+    const navItems = document.querySelectorAll('.left-nav li');
+    navItems.forEach(item => {
+        item.classList.remove('active');
+    });
+    event.currentTarget.classList.add('active');
+}
+    </script>
+    
+    <div class="top-nav">
+        <div class="logo">AI OS</div>
+            <a href="home.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+    </div>
+
+    
+    <div class="container">
+        <div class="left-panel">
+           
+            <img id="image" src="img_icon.jpeg" alt="Student Photo">
+            <h2>Bharatheesha S</h2>
+            <h3>CB.SC.U4CSE24505</h3>
+        
+        <div class="left-nav">
+            <ul>
+                <li onclick="loadContent('details')">
+                    <span class="icon">🎓</span>
+                    <span class="text">Details</span>
+                </li>
+                <li onclick="loadContent('attendance')">
+                    <span class="icon">📅</span>
+                    <span class="text">Attendance</span>
+                </li>
+                <li onclick="loadContent('marks')">
+                    <span class="icon">📊</span>
+                    <span class="text">Marks</span>
+                </li>
+            </ul>
+        </div>
+        </div>
+
+        <div class="right-panel">
+            <iframe id=contentFrame src="" ></iframe>
+        </div>
+    </div>
+
+</body>
+</html>
