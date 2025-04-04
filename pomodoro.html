@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer - AI OS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&display=swap');
+        
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #374151;
+            text-align: center;
+            background-color: #eee7e5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        * { box-sizing: border-box; }
+        
+        .nav {
+            height: 8vh;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        header ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+        }
+        
+        header ul li {
+            display: inline-block;
+            margin-left: 15px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            font-size: 1.2rem;
+            padding: 5px 10px;
+            position: relative;
+        }
+        
+        /* Underline effect */
+        .link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .link:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .header-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #111827;
+            margin: 0;
+        }
+        
+        /* Pomodoro App Specific Styles */
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        
+        .timer {
+            font-size: 5rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: #1F2937;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .start-btn {
+            background-color: #10B981;
+            color: white;
+        }
+        
+        .pause-btn {
+            background-color: #F59E0B;
+            color: white;
+        }
+        
+        .reset-btn {
+            background-color: #EF4444;
+            color: white;
+        }
+        
+        .settings {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .setting-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        label {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        input {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        .mode {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .focus-mode {
+            color: #10B981;
+        }
+        
+        .break-mode {
+            color: #3B82F6;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #E5E7EB;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: #10B981;
+            transition: width 1s linear;
+            width: 100%;
+        }
+        
+        .break-progress {
+            background-color: #3B82F6;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href=""><h1 class="header-title">AI OS</h1></a>
+        <nav>
+            <ul>
+                <li><a href="home.html" class="link">Home</a></li>
+                <li><a href="tools.html" class="link">Tools</a></li>
+                <li><a href="about.html" class="link">About</a></li>
+                <li><a href="contact.html" class="link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h2>Pomodoro Timer</h2>
+        
+        <div class="mode focus-mode">Focus Time</div>
+        
+        <div class="progress-bar">
+            <div class="progress" id="progress-bar"></div>
+        </div>
+        
+        <div class="timer" id="timer">25:00</div>
+        
+        <div class="controls">
+            <button class="start-btn" id="start-btn">Start</button>
+            <button class="pause-btn" id="pause-btn" disabled>Pause</button>
+            <button class="reset-btn" id="reset-btn">Reset</button>
+        </div>
+        
+        <div class="settings">
+            <div class="setting-group">
+                <label for="focus-time">Focus Time (min)</label>
+                <input type="number" id="focus-time" min="1" max="60" value="25">
+            </div>
+            
+            <div class="setting-group">
+                <label for="break-time">Break Time (min)</label>
+                <input type="number" id="break-time" min="1" max="30" value="5">
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const timerDisplay = document.getElementById('timer');
+            const startBtn = document.getElementById('start-btn');
+            const pauseBtn = document.getElementById('pause-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const focusTimeInput = document.getElementById('focus-time');
+            const breakTimeInput = document.getElementById('break-time');
+            const modeDisplay = document.querySelector('.mode');
+            const progressBar = document.getElementById('progress-bar');
+            
+            let timer;
+            let isRunning = false;
+            let isPaused = false;
+            let isFocusMode = true;
+            let totalSeconds = 0;
+            let remainingSeconds = 0;
+            let originalSeconds = 0;
+            
+            // Function to format time as MM:SS
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+                const secs = (seconds % 60).toString().padStart(2, '0');
+                return `${mins}:${secs}`;
+            }
+            
+            // Function to update timer display
+            function updateDisplay() {
+                timerDisplay.textContent = formatTime(remainingSeconds);
+                
+                // Update progress bar
+                const progress = (remainingSeconds / originalSeconds) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+            
+            // Function to start timer
+            function startTimer() {
+                if (!isRunning) {
+                    // Set initial time if not already set
+                    if (remainingSeconds === 0) {
+                        const focusTime = parseInt(focusTimeInput.value);
+                        totalSeconds = focusTime * 60;
+                        remainingSeconds = totalSeconds;
+                        originalSeconds = totalSeconds;
+                    }
+                    
+                    isRunning = true;
+                    isPaused = false;
+                    
+                    startBtn.disabled = true;
+                    pauseBtn.disabled = false;
+                    focusTimeInput.disabled = true;
+                    breakTimeInput.disabled = true;
+                    
+                    // Update every second
+                    timer = setInterval(function() {
+                        remainingSeconds--;
+                        
+                        // Update display
+                        updateDisplay();
+                        
+                        // Timer completed
+                        if (remainingSeconds <= 0) {
+                            clearInterval(timer);
+                            isRunning = false;
+                            
+                            // Play sound and show alert
+                            const audio = new Audio('https://cdnjs.cloudflare.com/ajax/libs/ion-sound/3.0.7/sounds/bell_ring.mp3');
+                            audio.play();
+                            
+                            // Toggle between focus and break
+                            isFocusMode = !isFocusMode;
+                            
+                            if (isFocusMode) {
+                                modeDisplay.textContent = 'Focus Time';
+                                modeDisplay.className = 'mode focus-mode';
+                                progressBar.className = 'progress';
+                                const focusTime = parseInt(focusTimeInput.value);
+                                totalSeconds = focusTime * 60;
+                                alert("Break time is over! Time to focus!");
+                            } else {
+                                modeDisplay.textContent = 'Break Time';
+                                modeDisplay.className = 'mode break-mode';
+                                progressBar.className = 'progress break-progress';
+                                const breakTime = parseInt(breakTimeInput.value);
+                                totalSeconds = breakTime * 60;
+                                alert("Focus time is over! Time for a break!");
+                            }
+                            
+                            remainingSeconds = totalSeconds;
+                            originalSeconds = totalSeconds;
+                            
+                            // Auto-start next timer
+                            startTimer();
+                        }
+                    }, 1000);
+                }
+            }
+            
+            // Function to pause timer
+            function pauseTimer() {
+                if (isRunning && !isPaused) {
+                    clearInterval(timer);
+                    isPaused = true;
+                    isRunning = false;
+                    pauseBtn.textContent = 'Resume';
+                    startBtn.disabled = true;
+                } else if (isPaused) {
+                    isPaused = false;
+                    pauseBtn.textContent = 'Pause';
+                    startTimer();
+                }
+            }
+            
+            // Function to reset timer
+            function resetTimer() {
+                clearInterval(timer);
+                isRunning = false;
+                isPaused = false;
+                
+                // Reset to focus mode
+                isFocusMode = true;
+                modeDisplay.textContent = 'Focus Time';
+                modeDisplay.className = 'mode focus-mode';
+                progressBar.className = 'progress';
+                
+                // Reset buttons
+                startBtn.disabled = false;
+                pauseBtn.disabled = true;
+                pauseBtn.textContent = 'Pause';
+                
+                // Enable inputs
+                focusTimeInput.disabled = false;
+                breakTimeInput.disabled = false;
+                
+                // Reset timer display
+                const focusTime = parseInt(focusTimeInput.value);
+                remainingSeconds = focusTime * 60;
+                originalSeconds = remainingSeconds;
+                updateDisplay();
+                
+                // Reset progress bar
+                progressBar.style.width = '100%';
+            }
+            
+            // Initial setup
+            resetTimer();
+            
+            // Event listeners
+            startBtn.addEventListener('click', startTimer);
+            pauseBtn.addEventListener('click', pauseTimer);
+            resetBtn.addEventListener('click', resetTimer);
+            
+            // Update timer display when input values change
+            focusTimeInput.addEventListener('change', function() {
+                if (!isRunning && isFocusMode) {
+                    const focusTime = parseInt(focusTimeInput.value);
+                    remainingSeconds = focusTime * 60;
+                    updateDisplay();
+                }
+            });
+            
+            breakTimeInput.addEventListener('change', function() {
+                if (!isRunning && !isFocusMode) {
+                    const breakTime = parseInt(breakTimeInput.value);
+                    remainingSeconds = breakTime * 60;
+                    updateDisplay();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

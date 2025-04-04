@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App - AI OS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&display=swap');
+        
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #374151;
+            text-align: center;
+            background-color: #eee7e5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        * { box-sizing: border-box; }
+        
+        .nav {
+            height: 8vh;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        header ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+        }
+        
+        header ul li {
+            display: inline-block;
+            margin-left: 15px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            font-size: 1.2rem;
+            padding: 5px 10px;
+            position: relative;
+        }
+        
+        /* Underline effect */
+        .link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .link:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .header-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #111827;
+            margin: 0;
+        }
+        
+        /* Weather App Styles */
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9fafb;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .search input {
+            padding: 10px 15px;
+            width: 70%;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px 0 0 8px;
+            font-size: 1rem;
+            outline: none;
+            font-family: "Inter", sans-serif;
+        }
+        
+        .search button {
+            padding: 10px 15px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-family: "Inter", sans-serif;
+            font-weight: 500;
+        }
+        
+        .search button:hover {
+            background-color: #2563eb;
+        }
+        
+        .weather {
+            text-align: center;
+        }
+        
+        .city {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .date {
+            font-size: 1rem;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+        
+        .temp {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 5px 0;
+            color: #111827;
+        }
+        
+        .description {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .details {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .detail {
+            padding: 10px;
+            background-color: rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
+            min-width: 120px;
+        }
+        
+        .detail-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        
+        .detail-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .error {
+            color: #ef4444;
+            margin: 10px 0;
+            display: none;
+        }
+        
+        .weather-icon {
+            font-size: 80px;
+            margin: 10px auto;
+            line-height: 1;
+        }
+        
+        .forecast {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        
+        .forecast-item {
+            min-width: 80px;
+            text-align: center;
+            padding: 10px;
+            background-color: white;
+            border-radius: 8px;
+            margin-right: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .forecast-day {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .forecast-icon {
+            font-size: 32px;
+            margin: 5px auto;
+            line-height: 1;
+        }
+        
+        .forecast-temp {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        /* Weather Icons as SVG */
+        .weather-svg {
+            width: 80px;
+            height: 80px;
+            margin: 10px auto;
+        }
+        
+        .forecast-svg {
+            width: 40px;
+            height: 40px;
+            margin: 5px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href=""><h1 class="header-title">AI OS</h1></a>
+        <nav>
+            <ul>
+                <li><a href="home.html" class="link">Home</a></li>
+                <li><a href="tools.html" class="link">Tools</a></li>
+                <li><a href="about.html" class="link">About</a></li>
+                <li><a href="contact.html" class="link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="search">
+            <input type="text" placeholder="Enter city name" id="city-input">
+            <button id="search-btn">Search</button>
+        </div>
+        
+        <div class="error" id="error-message">City not found. Please try again.</div>
+        
+        <div class="weather" id="weather-data">
+            <div class="city" id="city">New York, US</div>
+            <div class="date" id="date">Friday, April 4, 2025</div>
+            <div class="weather-icon" id="weather-icon">☀️</div>
+            <div class="temp" id="temperature">22°C</div>
+            <div class="description" id="description">Sunny</div>
+            
+            <div class="details">
+                <div class="detail">
+                    <div class="detail-label">Feels Like</div>
+                    <div class="detail-value" id="feels-like">24°C</div>
+                </div>
+                <div class="detail">
+                    <div class="detail-label">Humidity</div>
+                    <div class="detail-value" id="humidity">65%</div>
+                </div>
+                <div class="detail">
+                    <div class="detail-label">Wind</div>
+                    <div class="detail-value" id="wind">8 km/h</div>
+                </div>
+            </div>
+            
+            <div class="forecast" id="forecast">
+                <!-- Forecast data will be added here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data for demonstration (now in Celsius)
+        const sampleData = {
+            city: "New York, US",
+            date: "Friday, April 4, 2025",
+            temperature: 22,
+            description: "Sunny",
+            icon: "☀️",
+            feelsLike: 24,
+            humidity: 65,
+            wind: 8,
+            forecast: [
+                { day: "Sat", temp: 23, icon: "☀️", condition: "Sunny" },
+                { day: "Sun", temp: 21, icon: "⛅", condition: "Partly Cloudy" },
+                { day: "Mon", temp: 20, icon: "🌧️", condition: "Light Rain" },
+                { day: "Tue", temp: 22, icon: "☀️", condition: "Sunny" },
+                { day: "Wed", temp: 24, icon: "☀️", condition: "Sunny" }
+            ]
+        };
+
+        // Weather condition to emoji mapping
+        const weatherIcons = {
+            "Sunny": "☀️",
+            "Clear": "☀️",
+            "Partly Cloudy": "⛅",
+            "Cloudy": "☁️",
+            "Light Rain": "🌧️",
+            "Rain": "🌧️",
+            "Thunderstorm": "⛈️",
+            "Snowy": "❄️",
+            "Snow": "❄️",
+            "Foggy": "🌫️",
+            "Fog": "🌫️",
+            "Windy": "💨"
+        };
+
+        // Function to get appropriate weather icon
+        function getWeatherIcon(condition) {
+            return weatherIcons[condition] || "☀️"; // Default icon if condition not found
+        }
+
+        // Function to update the UI with weather data
+        function updateUI(data) {
+            document.getElementById('city').textContent = data.city;
+            document.getElementById('date').textContent = data.date;
+            document.getElementById('temperature').textContent = `${data.temperature}°C`;
+            document.getElementById('description').textContent = data.description;
+            document.getElementById('feels-like').textContent = `${data.feelsLike}°C`;
+            document.getElementById('humidity').textContent = `${data.humidity}%`;
+            document.getElementById('wind').textContent = `${data.wind} km/h`;
+            
+            // Update weather icon with emoji
+            document.getElementById('weather-icon').textContent = getWeatherIcon(data.description);
+            
+            // Update forecast
+            const forecastContainer = document.getElementById('forecast');
+            forecastContainer.innerHTML = '';
+            
+            data.forecast.forEach(day => {
+                const forecastItem = document.createElement('div');
+                forecastItem.className = 'forecast-item';
+                
+                forecastItem.innerHTML = `
+                    <div class="forecast-day">${day.day}</div>
+                    <div class="forecast-icon">${getWeatherIcon(day.condition || 'Sunny')}</div>
+                    <div class="forecast-temp">${day.temp}°C</div>
+                `;
+                
+                forecastContainer.appendChild(forecastItem);
+            });
+        }
+
+        // Initialize with sample data
+        updateUI(sampleData);
+
+        // Search functionality
+        document.getElementById('search-btn').addEventListener('click', () => {
+            const cityInput = document.getElementById('city-input').value.trim();
+            
+            if (cityInput) {
+                // In a real app, you would fetch data from a weather API here
+                // For this demo, we'll modify the sample data
+                const errorMessage = document.getElementById('error-message');
+                
+                // Simulate a successful API response
+                if (cityInput.toLowerCase() !== "invalid") {
+                    errorMessage.style.display = 'none';
+                    
+                    // Update sample data with the new city name
+                    const newData = {...sampleData};
+                    newData.city = cityInput;
+                    
+                    // Randomize some values for demonstration
+                    newData.temperature = Math.floor(Math.random() * 15) + 15; // 15-30°C
+                    newData.feelsLike = newData.temperature + Math.floor(Math.random() * 3);
+                    newData.humidity = Math.floor(Math.random() * 30) + 50;
+                    newData.wind = Math.floor(Math.random() * 10) + 5;
+                    
+                    const descriptions = ["Sunny", "Partly Cloudy", "Cloudy", "Light Rain", "Thunderstorm", "Snowy", "Foggy"];
+                    newData.description = descriptions[Math.floor(Math.random() * descriptions.length)];
+                    
+                    // Update forecast with random data
+                    newData.forecast = newData.forecast.map(day => {
+                        const tempVariation = Math.floor(Math.random() * 6) - 2; // -2 to +3
+                        const newCondition = descriptions[Math.floor(Math.random() * descriptions.length)];
+                        return {
+                            ...day,
+                            temp: newData.temperature + tempVariation,
+                            condition: newCondition
+                        };
+                    });
+                    
+                    updateUI(newData);
+                } else {
+                    // Show error for demonstration purposes when "invalid" is entered
+                    errorMessage.style.display = 'block';
+                }
+            }
+        });
+
+        // Allow searching by pressing Enter
+        document.getElementById('city-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('search-btn').click();
+            }
+        });
+    </script>
+</body>
+</html>
