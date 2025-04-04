@@ -1,5 +1,5 @@
-/* General Reset */
-* {
+   /* General Reset */
+   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -163,17 +163,18 @@ select {
     border-radius: 5px;
     border: 1px solid #ccc;
     background-color: #ffe0f8;
-    appearance: calc();
+    appearance: none;
     cursor: pointer;
 }
+
 
 select:focus {
     outline: none;
     border-color: #7700ff;
 }
 button {
-    --glow-color: rgba(var(--accent-rgb), 40);
-    --glow-spread-color: rgba(var(--accent-rgb), );
+    --glow-color: rgba(var(--accent-rgb), 0.4);
+    --glow-spread-color: rgba(var(--accent-rgb), 0.2);
     --enhanced-glow-color: rgba(var(--accent-rgb), 0.1);
     --btn-color: var(--btn-bg-color);
     
@@ -193,6 +194,7 @@ button {
     transition: all 0.3s ease-in-out;
     transform: translateY(20px);
 }
+
 
 button::after {
     pointer-events: none;
@@ -232,6 +234,7 @@ button:active {
 .lightmode {
     --accent-rgb: 0, 0, 0;
 }
+
 .resources-container {
     display: flex;
     justify-content: center;
@@ -258,24 +261,7 @@ button:active {
     100% { transform: rotate(360deg); }
 }
 
-.nextt p {
-    font-size: 1.4rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
 
-.nextt h3 {
-    font-size: 2rem;
-    font-weight: bolder;
-    margin-top: 4rem;     /* Added margin-top */
-    margin-bottom: 1rem;
-    color: var(--accent-color);
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
 
 .cards-container {
     display: flex;
@@ -283,6 +269,7 @@ button:active {
     gap: 20px;
     padding: 20px;
     margin-top: 50px;
+    margin-bottom: 80px;
 }
 
 .card {
@@ -599,4 +586,3 @@ body::-webkit-scrollbar-thumb:hover {
     margin-top: 2rem;
     font-size: 0.9rem;
 }
-    
