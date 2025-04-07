@@ -566,7 +566,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .footer-links a:hover {
-    color: yellow;
+    color: rgb(227, 159, 246);
 }
 
 .footer-contact p {

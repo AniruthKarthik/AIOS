@@ -92,7 +92,7 @@ nav .nav-links li a {
 }
 
 nav .nav-links li a:hover {
-    color: var(--accent-color);
+    color:  rgb(227, 159, 246);
 }
 /* Theme Toggle Button */
 .theme-toggle {
@@ -527,7 +527,7 @@ nav .nav-links li a:hover {
 }
 
 .footer-links a:hover {
-    color: var(--accent-color);
+    color: rgb(227, 159, 246);
 }
 
 .footer-contact p {

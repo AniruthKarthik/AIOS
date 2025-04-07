@@ -106,5 +106,32 @@ function showMaterials(subject) {
                 toggleIcon.textContent = '🌞';
                 localStorage.setItem('theme', 'dark');
             }
+            
         });
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // ...your existing code...
+    
+        const sidebarItems = document.querySelectorAll('.sidebar ul li');
+    
+        sidebarItems.forEach(item => {
+            item.addEventListener('click', function () {
+                // Reset all items
+                sidebarItems.forEach(el => {
+                    el.style.backgroundColor = '';
+                    el.style.color = '';
+                });
+    
+                // Highlight the clicked item
+                this.style.backgroundColor =  "rgba(129, 124, 122, 0.9)";
+                this.style.color = '#ffffff'; // white text
+            });
+        });
+        // Default selection for 'CPS'
+    const defaultItem = [...sidebarItems].find(li => li.textContent.trim().includes('Computational Problem Solving'));
+    if (defaultItem) {
+        defaultItem.click(); // triggers both showMaterials and styling
+    }
+    });
+    

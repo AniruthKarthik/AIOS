@@ -158,7 +158,7 @@
                     errorSpan.textContent = "Invalid email format";
                 } else if (this.id === "phone" && !/^\d{10}$/.test(this.value)) {
                     errorSpan.textContent = "Phone number must be 10 digits";
-                } else if (this.id === "idno" && !/^[a-zA-Z]{2}\.[a-zA-Z]{2}\.\d{2}[a-zA-Z]{2}\d{5}$/.test(this.value)) {
+                } else if (this.id === "idno" && !/^[a-zA-Z]{2}\.[a-zA-Z]{2}\.[a-zA-Z]{1}\d{1}[a-zA-Z]{3}\d{5}$/.test(this.value)) {
                     errorSpan.textContent = "Invalid ID number format. For ex: CB.SC.U4CSE245XX";
                 }
             });
@@ -180,7 +180,7 @@
             let idnoInput = document.getElementById("idno");
             let idnoError = document.getElementById("idnoError");
             
-            if (!/^[a-zA-Z]{2}\.[a-zA-Z]{2}\.\d{2}[a-zA-Z]{2}\d{5}$/.test(idnoInput.value)) {
+            if (!/^[a-zA-Z]{2}\.[a-zA-Z]{2}\.[a-zA-Z]{1}\d{1}[a-zA-Z]{3}\d{5}$/.test(idnoInput.value)) {
                 idnoError.textContent = "Invalid ID number format. For ex: CB.SC.U4CSE245XX";
                 return;
             } else {
