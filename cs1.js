@@ -81,3 +81,30 @@ function showMaterials(subject) {
     }
     
 }
+
+    // Wait for the DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.getElementById('theme-toggle');
+        const toggleIcon = document.querySelector('.toggle-icon');
+        
+        // Check if user has a saved preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            toggleIcon.textContent = '🌙';
+        }
+        
+        // Toggle theme when button is clicked
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+            
+            // Update icon based on current theme
+            if (document.body.classList.contains('light-mode')) {
+                toggleIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                toggleIcon.textContent = '🌞';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    });
