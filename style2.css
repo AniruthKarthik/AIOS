@@ -76,6 +76,7 @@ body {
     margin-top: 80px;
 }
 .left-panel {
+    margin-top: 5.5%;  /*temp changes made just for presentation */
     width: 20%;
     padding: 30px;
     background: white;
